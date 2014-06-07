@@ -12,7 +12,7 @@ class simpleapp_tk(Tkinter.Tk):
 
 	def initialize(self):
 		
-		self.boutons = [["images/fhaute.gif",2,0,"images/fhautep.gif"],["images/fdroite.gif",3,1,"images/fdroitep.gif"],["images/fbasse.gif",2,2,"images/fbassep.gif"],["images/fgauche.gif",1,1,"images/fgauchep.gif"]]
+		self.boutons = [["images/fhaute.gif",2,0,"images/fhautep.gif"],["images/fdroite.gif",1,1,"images/fdroitep.gif"],["images/fbasse.gif",2,2,"images/fbassep.gif"],["images/fgauche.gif",3,1,"images/fgauchep.gif"]]
 		self.grid()
 
 		self.photoL=Tkinter.PhotoImage(file="images/rect.gif")
@@ -26,7 +26,7 @@ class simpleapp_tk(Tkinter.Tk):
 		self.cadre.grid(column=5,row=0,rowspan=3,sticky='NS')
 		
 		boutonOk = Tkinter.Button(self,text="OK",bd=0,command=self.OnButtonOkClick,height=1,width=35)
-		boutonOk.grid(column=5,row=4,sticky='NS')
+		boutonOk.grid(column=2,row=1,sticky='NS')
 
 		self.bouton = []
 		self.image = []
