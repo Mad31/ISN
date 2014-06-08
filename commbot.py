@@ -61,7 +61,7 @@ commande(1,brick)
 sleep(0.1)
 commande(2,brick)
 sleep(0.1)
-commande(3,brick
+commande(3,brick)
 sleep(0.1)
 commande(4,brick)
 printVersion(brick)
