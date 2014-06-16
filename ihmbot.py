@@ -59,7 +59,6 @@ def OnButtonOkClick():
 
 def OnButtonClick(nb):
 	AddMvt(nb)
-	
 	PrintMvt(nb)
 	
 def AddMvt(nb):
