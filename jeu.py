@@ -1,4 +1,4 @@
- #! /usr/bin/env Python
+#! /usr/bin/env Python
 
 import nxt.locator
 from nxt.motor import *
@@ -35,8 +35,8 @@ def printVersion(brick):
 
 def commande(i):
     """ execute les commande"""
-    """ le 8 : avancer """
-    if i==8:
+    """ le 0 : avancer et tester si il y a un mur"""
+    if i==0:
         lumiere.set_illuminated(True)
         lumens=lumiere.get_lightness()
         if lumens >600 :
@@ -45,29 +45,23 @@ def commande(i):
             deux.idle()
         else :
             print "perdu"
-    """ le 2 tourner à gauche """
-    if i==4 :
+            lumiere.set_illuminated()
+    """ le 3 tourner à gauche 1/4 de tour"""
+    if i==3 :
         deuxgauche.brake()
         deuxgauche.reset_position(True)
         deuxgauche.turn(75,170,True)
        
-    """ le 3 tourner à droite """
-    if i==6 :
+    """ le 2 tourner à droite 1/4 de tour"""
+    if i==2 :
         deuxdroite.brake()
         deuxdroite.reset_position(True)
         deuxdroite.turn(75,170,True)
      
-    """ le 4 reculer"""
-    if i==2 :
-        deux.turn(-100,360,True)
-    if i==7 :
-        gauche.turn(100,165,True)
-    if i==9 :
-        droite.turn(100,165,True)
-    if i==1 :
-        gauche.turn(100,465,True)
+    """ le 3 reculer"""
     if i==3 :
-        droite.turn(100,465,True)
+        deux.turn(-75,500,True)
+   
         
 
 brick=rechercher_brique("NXT5")
