@@ -88,7 +88,7 @@ def DessineGui():
 def OnButtonCorClick():
 	if nombre != 0:
 		global listMvt
-		listMvt.pop
+		del listMvt[nombre-1]
 		DelMvt()
 
 """
@@ -105,7 +105,7 @@ def OnButtonEffClick():
 """
 def OnButtonOkClick():
 	for mvt in listMvt:
-		Commande(mvt)
+		# Commande(mvt)
 		sleep(0.1)
 
 """
@@ -148,9 +148,10 @@ def DelMvt():
 	global listImg
 	global listLabel
 	nombre -= 1
-	listImg.pop
+	del listImg[nombre]
 	listLabel[nombre].grid_forget()
-	listLabel.pop
+	del listLabel[nombre]
+
 
 """
 	Suppression de tous les labels et images
