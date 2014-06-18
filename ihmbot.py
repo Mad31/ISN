@@ -105,7 +105,7 @@ def OnButtonEffClick():
 """
 def OnButtonOkClick():
 	for mvt in listMvt:
-		# Commande(mvt)
+		Commande(mvt)
 		sleep(0.1)
 
 """
