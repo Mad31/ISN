@@ -112,7 +112,6 @@ def OnButtonOkClick():
 	Ajout d'un entier [0..3] à listMvt lors du clic d'un bouton de direction
 """
 def OnButtonClick(nb):
-<<<<<<< HEAD
 	if nombre <= nbMaxLig * nbParLig:
 		global listMvt
 		listMvt.append(nb) 
@@ -123,15 +122,6 @@ def OnButtonClick(nb):
 """
 	Affichage de l'image réduite du bouton cliqué dans le cadre de droite
 """	
-=======
-	AddMvt(nb)
-	PrintMvt(nb)
-	
-def AddMvt(nb):
-	global listMvt
-	listMvt.append(nb)
-	
->>>>>>> FETCH_HEAD
 def PrintMvt(nb):
 	global nombre
 	global listImg
@@ -140,10 +130,8 @@ def PrintMvt(nb):
 	# Ajout de la nouvelle image de mouvement
 	listImg.append(Tkinter.PhotoImage(file=boutons[nb][3]))
 	listLabel.append(Tkinter.Label(cadre,image=listImg[nombre]))
-<<<<<<< HEAD
-
 	# Calcul de la postion de la nouvelle image, à droite de la précédente
-	# dans la limite de 10 par ligne
+	# dans la limite de nbParLig par ligne
 	ligne = math.ceil((nombre + 1) / float(nbParLig)) - 1
 	col = nombre - int(ligne) * nbParLig
 
@@ -174,9 +162,3 @@ def DelAllMvt():
 	listLabel[:] = []
 	global nombre
 	nombre = 0
-=======
-	col = math.ceil((nombre + 1) / float(9)) - 1
-	ligne = nombre - int(col)*9
-	listLabel[nombre].grid(column=int(col),row=ligne)
-	nombre += 1
->>>>>>> FETCH_HEAD
