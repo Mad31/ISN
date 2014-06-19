@@ -66,7 +66,8 @@ def Commande(i):
         deux.turn(-75,500,True)
 
 def InitComm():
-    brick=rechercher_brique(CodeBrick())
+    """ nom_brique=CodeBrick()"""
+    brick=rechercher_brique("NXT5")
     gauche = nxt.Motor(brick, PORT_B)
     droite = nxt.Motor(brick, PORT_C)
     global deux
