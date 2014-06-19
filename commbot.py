@@ -6,6 +6,7 @@ from nxt.motor import *
 import sys
 from time import *
 from nxt.sensor import *
+import Tkinter
 
 def rechercher_brique(nom_brick) :
     """ cherche la brique"""
@@ -65,7 +66,7 @@ def Commande(i):
         deux.turn(-75,500,True)
 
 def InitComm():
-    brick=rechercher_brique("NXT5")
+    brick=rechercher_brique(CodeBrick())
     gauche = nxt.Motor(brick, PORT_B)
     droite = nxt.Motor(brick, PORT_C)
     global deux
@@ -77,8 +78,25 @@ def InitComm():
     global lumiere
     lumiere = nxt.Light(brick, PORT_1)
     
+def CodeBrick():
+    global gui
+    gui = Tkinter.Tk()
+    gui.title('BabyBot')
+    gui.grid()
+    label = Tkinter.Label(gui,text="Saisir l'identifiant du robot")
+    label.grid(column=0,row=0,columnspan=2)
+    global valeurSaisie
+    valeurSaisie = Tkinter.StringVar()
+    texte = Tkinter.Entry(gui,textvariable=valeurSaisie)
+    texte.grid(column=0,row=1)
+    bouton = Tkinter.Button(gui,text="OK",command=BoutonClic)
+    bouton.grid(column=1,row=1)
+    gui.mainloop()
+    return valeurSaisie.get()
 
-
+def BoutonClic():
+    if valeurSaisie.get():
+      gui.quit()
 
 """commande(1,brick)
 sleep(0.1)
