@@ -37,28 +37,37 @@ def printVersion(brick):
 
 
 def Commande(i):
+    # intialisation du capteur de lumière
+    lumiere.set_illuminated(True)
+    sleep(0.1)
+    lumens=lumiere.get_lightness()
+    print lumens
+    global mur
+    mur=False
     
     """ execute les commande"""
-    """ le 0 : avancer et tester si il y a un mur"""
+    """ le 0 : avancer et tester si il y a un mur si il y a un mur c'est perdu"""
     if i==0:
-        lumiere.set_illuminated(True)
-        lumens=lumiere.get_lightness()
         if lumens >600 :
-            print lumens
             deux.turn(75,500,True)
             deux.idle()
         else :
             perdu = True
+            mur = True
             print perdu
             lumiere.set_illuminated(False)
     """ le 2 tourner à gauche 1/4 de tour"""
     if i==3 :
+        if lumens <600 :
+            mur = True
         deuxgauche.brake()
         deuxgauche.reset_position(True)
         deuxgauche.turn(75,170,True)
 
     """ le 1 tourner à droite 1/4 de tour"""
     if i==1 :
+        if lumens <600 :
+            mur = True
         deuxdroite.brake()
         deuxdroite.reset_position(True)
         deuxdroite.turn(75,170,True)
@@ -66,7 +75,9 @@ def Commande(i):
     """ le 1 reculer"""
     if i==2 :
         deux.turn(-75,500,True)
-
+    lumiere.set_illuminated(False)
+    print mur
+    
 def InitComm():
     """ nom_brique=CodeBrick()"""
     brick=rechercher_brique("NXT5")
