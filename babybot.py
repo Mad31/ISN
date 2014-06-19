@@ -6,5 +6,7 @@ from commbot import InitComm
 
 
 if __name__ == "__main__":
-	InitComm()
-	InitGui()
+        global perdu
+        perdu = False
+        InitComm()
+        InitGui()

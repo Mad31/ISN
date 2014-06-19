@@ -37,6 +37,7 @@ def printVersion(brick):
 
 
 def Commande(i):
+    
     """ execute les commande"""
     """ le 0 : avancer et tester si il y a un mur"""
     if i==0:
@@ -47,7 +48,8 @@ def Commande(i):
             deux.turn(75,500,True)
             deux.idle()
         else :
-            print "perdu"
+            perdu = True
+            print perdu
             lumiere.set_illuminated(False)
     """ le 2 tourner à gauche 1/4 de tour"""
     if i==3 :
