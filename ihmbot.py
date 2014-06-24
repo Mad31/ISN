@@ -2,9 +2,11 @@
 # -*- coding: utf-8 -*-
 
 import Tkinter
+import tkMessageBox
 import math
 from commbot import Commande
 from time import sleep
+import sys
 
 """
 	Initialisation de l'interface graphique
@@ -31,6 +33,8 @@ def InitGui():
 	nbParLig = 6	#
 	global nbMaxLig # Nombre maximum de lignes de mouvements
 	nbMaxLig = 9	# 6*9=54 mvts max
+	global perdu
+	perdu=False
 
 
 	# Boucle d'attente des évènements : clic de bouton
@@ -105,8 +109,15 @@ def OnButtonEffClick():
 """
 def OnButtonOkClick():
 	for mvt in listMvt:
-		Commande(mvt)
+               	p = Commande(mvt)
 		sleep(0.1)
+		print "Perdu :"
+		print perdu 
+		if p==True :
+                        print "Perdu"
+                        gui.bind("<Button>",tkMessageBox.showinfo("Perdu","Perdu"))
+                        gui.destroy()
+                        sys.exit(0)
 
 """
 	Ajout d'un entier [0..3] à listMvt lors du clic d'un bouton de direction

@@ -39,7 +39,7 @@ def printVersion(brick):
 def Commande(i):
     # intialisation du capteur de lumière
     lumiere.set_illuminated(True)
-    sleep(0.1) # il faut attendre que le capteur s'allume avant de faire la mesure
+    sleep(0.3) # il faut attendre que le capteur s'allume avant de faire la mesure
     lumens=lumiere.get_lightness()
     print lumens
     global mur
@@ -48,29 +48,41 @@ def Commande(i):
     """ execute les commande"""
     """ le 0 : avancer et tester si il y a un mur si il y a un mur c'est perdu"""
     if i==0:
-        if lumens >600 :
-            deux.turn(75,500,True)
+        if lumens >500 :
+            deux._disable()
+            deux.reset_position(True)
+            deux._enable()
+            deux.turn(75,459,True)
             deux.idle()
         else :
             perdu = True
             mur = True
             print perdu
-            lumiere.set_illuminated(False)
+            lumiere.set_illuminated(False) 
+            return perdu
     """ le 2 tourner à gauche 1/4 de tour"""
-    if i==3 :
-        if lumens <600 :
-            mur = True
-        deuxgauche.brake()
-        deuxgauche.reset_position(True)
-        deuxgauche.turn(75,170,True)
-
-    """ le 1 tourner à droite 1/4 de tour"""
     if i==1 :
         if lumens <600 :
             mur = True
+        deuxgauche._disable()
+        deuxgauche._enable()
+        deuxgauche.brake()
+        deuxgauche.reset_position(True)
+        deuxgauche.turn(75,195,True)
+
+    """ le 1 tourner à droite 1/4 de tour"""
+    if i==3 :
+        if lumens <600 :
+            mur = True
+        deuxdroite._disable()
+        deuxdroite._enable()
         deuxdroite.brake()
-        deuxdroite.reset_position(True)
-        deuxdroite.turn(75,170,True)
+        deuxdroite.reset_position(False)
+        tacho=deuxdroite.get_tacho()
+        print tacho
+        deuxdroite.turn(75,195,True)
+        tacho=deuxdroite.get_tacho()
+        print tacho
 
     """ le 1 reculer"""
     if i==2 :
